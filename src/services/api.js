@@ -1,5 +1,5 @@
 import axios from "axios";
-const API = axios.create({ baseURL: "http://localhost:5000/api" });
+const API = axios.create({ baseURL: "https://fingen-backend.onrender.com/api" });
 
 export const signupUser = (data) => API.post("/auth/signup", data);
 export const loginUser = (data) => API.post("/auth/login", data);
