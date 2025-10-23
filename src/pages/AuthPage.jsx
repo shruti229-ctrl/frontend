@@ -29,33 +29,87 @@ export default function AuthPage() {
 
   return (
     <div style={containerStyle}>
+      {/* Background geometric pattern */}
+      <div style={backgroundPattern}></div>
+
       <div style={cardWrapper}>
-        <div style={{ ...cardStyle, transform: isLogin ? "translateX(0%)" : "translateX(-50%)" }}>
+        <div
+          style={{
+            ...cardStyle,
+            transform: isLogin ? "translateX(0%)" : "translateX(-50%)",
+          }}
+        >
           {/* Login Form */}
           <form onSubmit={handleSubmit} style={formStyle}>
-            <h2>Login</h2>
+            <h2 style={headingStyle}>Welcome Back 💖</h2>
             {err && <div style={errStyle}>{err}</div>}
-            <input name="email" type="email" placeholder="Email" value={form.email} onChange={handleChange} style={inputStyle} />
-            <input name="password" type="password" placeholder="Password" value={form.password} onChange={handleChange} style={inputStyle} />
-            <button type="submit" style={buttonStyle}>Login</button>
+            <input
+              name="email"
+              type="email"
+              placeholder="Email"
+              value={form.email}
+              onChange={handleChange}
+              style={inputStyle}
+            />
+            <input
+              name="password"
+              type="password"
+              placeholder="Password"
+              value={form.password}
+              onChange={handleChange}
+              style={inputStyle}
+            />
+            <button type="submit" style={buttonStyle}>
+              Login
+            </button>
           </form>
 
           {/* Signup Form */}
           <form onSubmit={handleSubmit} style={formStyle}>
-            <h2>Sign Up</h2>
+            <h2 style={headingStyle}>Join the Magic ✨</h2>
             {err && <div style={errStyle}>{err}</div>}
-            <input name="name" type="text" placeholder="Name" value={form.name} onChange={handleChange} style={inputStyle} />
-            <input name="email" type="email" placeholder="Email" value={form.email} onChange={handleChange} style={inputStyle} />
-            <input name="password" type="password" placeholder="Password" value={form.password} onChange={handleChange} style={inputStyle} />
-            <button type="submit" style={buttonStyle}>Sign Up</button>
+            <input
+              name="name"
+              type="text"
+              placeholder="Full Name"
+              value={form.name}
+              onChange={handleChange}
+              style={inputStyle}
+            />
+            <input
+              name="email"
+              type="email"
+              placeholder="Email"
+              value={form.email}
+              onChange={handleChange}
+              style={inputStyle}
+            />
+            <input
+              name="password"
+              type="password"
+              placeholder="Password"
+              value={form.password}
+              onChange={handleChange}
+              style={inputStyle}
+            />
+            <button type="submit" style={buttonStyle}>
+              Sign Up
+            </button>
           </form>
         </div>
       </div>
 
       <div style={toggleStyle}>
         <span>
-          {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
-          <span onClick={() => setIsLogin(!isLogin)} style={{ cursor: "pointer", fontWeight: "bold", color: "#1976d2" }}>
+          {isLogin ? "Don’t have an account?" : "Already have an account?"}{" "}
+          <span
+            onClick={() => setIsLogin(!isLogin)}
+            style={{
+              cursor: "pointer",
+              fontWeight: "bold",
+              color: "#e91e63",
+            }}
+          >
             {isLogin ? "Sign Up" : "Login"}
           </span>
         </span>
@@ -65,62 +119,103 @@ export default function AuthPage() {
 }
 
 // ---------- Styles ----------
+
 const containerStyle = {
+  position: "relative",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  minHeight: "calc(100vh - 64px)", // navbar height offset
-  background: "#f0f2f5",
-  fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+  minHeight: "100vh",
+  fontFamily: "'Poppins', sans-serif",
+  background: "linear-gradient(135deg, #ffafbd, #ffc3a0)",
+  overflow: "hidden",
+};
+
+const backgroundPattern = {
+  position: "absolute",
+  inset: 0,
+  background:
+    "radial-gradient(circle at 20% 20%, rgba(255,255,255,0.3) 0%, transparent 40%), radial-gradient(circle at 80% 80%, rgba(255,255,255,0.2) 0%, transparent 40%)",
+  zIndex: 0,
 };
 
 const cardWrapper = {
   width: 800,
   overflow: "hidden",
-  borderRadius: 8,
-  boxShadow: "0 6px 16px rgba(0,0,0,0.1)",
+  borderRadius: 20,
+  backdropFilter: "blur(12px)",
+  boxShadow: "0 8px 32px rgba(255, 105, 180, 0.3)",
+  zIndex: 1,
+  border: "1px solid rgba(255, 255, 255, 0.2)",
 };
 
 const cardStyle = {
   display: "flex",
-  width: 1600, // two forms side by side
-  transition: "transform 0.5s ease-in-out",
+  width: 1600, // Two forms side-by-side
+  transition: "transform 0.6s ease-in-out",
 };
 
 const formStyle = {
   width: 800,
-  padding: 40,
-  background: "#fff",
+  padding: "50px 60px",
   display: "flex",
   flexDirection: "column",
-  gap: 16,
+  gap: 18,
+  background: "rgba(255, 255, 255, 0.2)",
+  backdropFilter: "blur(16px)",
+  color: "#fff",
+  transition: "all 0.3s ease",
+};
+
+const headingStyle = {
+  textAlign: "center",
+  color: "#fff",
+  textShadow: "0 2px 10px rgba(255,255,255,0.3)",
 };
 
 const inputStyle = {
-  padding: 12,
-  fontSize: 14,
-  borderRadius: 4,
-  border: "1px solid #ccc",
+  padding: 14,
+  fontSize: 15,
+  borderRadius: 10,
+  border: "1px solid rgba(255,255,255,0.5)",
+  background: "rgba(255,255,255,0.3)",
+  color: "#fff",
+  outline: "none",
+  transition: "all 0.3s ease",
 };
 
 const buttonStyle = {
-  padding: 12,
+  padding: 14,
   fontSize: 16,
-  borderRadius: 4,
+  borderRadius: 10,
   border: "none",
-  background: "#1976d2",
+  background:
+    "linear-gradient(135deg, #ff6f91, #ff8fab, #f48fb1)",
   color: "#fff",
   cursor: "pointer",
+  fontWeight: "bold",
+  letterSpacing: "0.5px",
+  boxShadow: "0 4px 12px rgba(255, 105, 180, 0.3)",
+  transition: "transform 0.2s ease, box-shadow 0.2s ease",
+  hover: {
+    transform: "scale(1.05)",
+  },
 };
 
 const toggleStyle = {
-  marginTop: 20,
-  fontSize: 14,
-  color: "#555",
+  marginTop: 25,
+  fontSize: 15,
+  color: "#fff",
+  textShadow: "0 1px 2px rgba(0,0,0,0.2)",
+  zIndex: 2,
 };
 
 const errStyle = {
-  color: "#f44336",
+  color: "#ffebee",
+  background: "rgba(244,67,54,0.4)",
+  padding: "8px 12px",
+  borderRadius: 6,
   fontSize: 14,
+  textAlign: "center",
 };
